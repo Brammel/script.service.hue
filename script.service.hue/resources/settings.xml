@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+    <category label="10001">
+        <setting label="10011" type="enum" id="dim_strength" values="Bright|Normal|Dim|Very Dim" default="1"/>
+        <setting label="10012" type="enum" id="transition_time" values="Short|Medium|Long|Very Long" default="1"/>
+        <setting type="sep"/>
+        <setting label="10013" type="ipaddress" id="bridge_ip_address" default="192.168.1.72"/>        
+    </category>
+    <category label="11001">
+        <setting label="11011" type="bool" id="light_1" default="true"/>
+        <setting label="11012" type="bool" id="light_2" default="true"/>
+        <setting label="11013" type="bool" id="light_3" default="true"/>
+        <setting label="11014" type="bool" id="light_4" default="false"/>
+        <setting label="11015" type="bool" id="light_5" default="false"/>
+        <setting label="11016" type="bool" id="light_6" default="false"/>
+        <setting label="11017" type="bool" id="light_7" default="false"/>
+        <setting label="11018" type="bool" id="light_8" default="false"/>
+        <setting label="11019" type="bool" id="light_9" default="false"/>
+        <setting label="11020" type="bool" id="light_10" default="false"/>
+        <setting label="11021" type="bool" id="light_11" default="false"/>
+        <setting label="11022" type="bool" id="light_12" default="false"/>
+        <setting label="11023" type="bool" id="light_13" default="false"/>
+        <setting label="11024" type="bool" id="light_14" default="false"/>
+        <setting label="11025" type="bool" id="light_15" default="false"/>
+        <setting label="11026" type="bool" id="light_16" default="false"/>
+        <setting label="11027" type="bool" id="light_17" default="false"/>
+        <setting label="11028" type="bool" id="light_18" default="false"/>
+        <setting label="11029" type="bool" id="light_19" default="false"/>
+        <setting label="11030" type="bool" id="light_20" default="false"/>
+        <setting label="11031" type="bool" id="light_21" default="false"/>
+        <setting label="11032" type="bool" id="light_22" default="false"/>
+        <setting label="11033" type="bool" id="light_23" default="false"/>
+        <setting label="11034" type="bool" id="light_24" default="false"/>
+        <setting label="11035" type="bool" id="light_25" default="false"/>
+        <setting label="11036" type="bool" id="light_26" default="false"/>
+        <setting label="11037" type="bool" id="light_27" default="false"/>
+        <setting label="11038" type="bool" id="light_28" default="false"/>
+        <setting label="11039" type="bool" id="light_29" default="false"/>
+        <setting label="11040" type="bool" id="light_30" default="false"/>
+        <setting label="11041" type="bool" id="light_31" default="false"/>
+        <setting label="11042" type="bool" id="light_32" default="false"/>
+        <setting label="11043" type="bool" id="light_33" default="false"/>
+        <setting label="11044" type="bool" id="light_34" default="false"/>
+        <setting label="11045" type="bool" id="light_35" default="false"/>
+        <setting label="11046" type="bool" id="light_36" default="false"/>
+        <setting label="11047" type="bool" id="light_37" default="false"/>
+        <setting label="11048" type="bool" id="light_38" default="false"/>
+        <setting label="11049" type="bool" id="light_39" default="false"/>
+        <setting label="11050" type="bool" id="light_40" default="false"/>
+        <setting label="11051" type="bool" id="light_41" default="false"/>
+        <setting label="11052" type="bool" id="light_42" default="false"/>
+        <setting label="11053" type="bool" id="light_43" default="false"/>
+        <setting label="11054" type="bool" id="light_44" default="false"/>
+        <setting label="11055" type="bool" id="light_45" default="false"/>
+        <setting label="11056" type="bool" id="light_46" default="false"/>
+        <setting label="11057" type="bool" id="light_47" default="false"/>
+        <setting label="11058" type="bool" id="light_48" default="false"/>
+        <setting label="11059" type="bool" id="light_49" default="false"/>
+        <setting label="11060" type="bool" id="light_50" default="false"/>
+    </category>
+</settings>

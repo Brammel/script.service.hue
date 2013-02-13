@@ -1,0 +1,9 @@
+0.1.0:
+    - Increased the bridge registration time
+    - Rename of dim strength to dim level.
+0.0.6:
+    - Added support for pause and resume
+    - Added support for up to 50 lights
+    - Compatible with XBMC 11 (Eden)
+0.0.1:
+    - Initial version

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="script.service.hue" name="Philips Hue Dimmer" version="0.1.0" provider-name="Bram de Roos">
+    <requires>
+        <import addon="xbmc.python" version="2.0"/>
+    </requires>
+    <extension point="xbmc.service" library="hue.py" start="[login|startup]">
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary lang="en">Dims the Hue lights when a movie is started.</summary>
+        <description lang="en">Dims the enabled lights in the setting when a movie is started or resumed. When stopped or paused the lights will go back to the original brightness. 
+
+The first registration of the bridge is done when starting or stopping a movie. When the link notification is shown, run to your bridge and press the button. This has to be done once.</description>
+    </extension>
+</addon>
