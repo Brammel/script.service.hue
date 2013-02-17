@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
     <category label="10001">
-        <setting label="10011" type="enum" id="dim_strength" values="Bright|Normal|Dim|Very Dim" default="1"/>
+        <setting label="10011" type="enum" id="dim_strength" values="Bright|Normal|Dim|Very Dim|Off" default="1"/>
         <setting label="10012" type="enum" id="transition_time" values="Short|Medium|Long|Very Long" default="1"/>
         <setting type="sep"/>
         <setting label="10013" type="ipaddress" id="bridge_ip_address" default="192.168.1.72"/>        

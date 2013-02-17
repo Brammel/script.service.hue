@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<addon id="script.service.hue" name="Philips Hue Dimmer" version="0.1.0" provider-name="Bram de Roos">
+<addon id="script.service.hue" name="Philips Hue Dimmer" version="0.1.1" provider-name="Bram de Roos">
     <requires>
         <import addon="xbmc.python" version="2.0"/>
     </requires>

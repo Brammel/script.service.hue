@@ -1,3 +1,5 @@
+0.1.1:
+    - Added the total off setting for the dim strength
 0.1.0:
     - Increased the bridge registration time
     - Rename of dim strength to dim level.

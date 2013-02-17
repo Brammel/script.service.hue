@@ -173,33 +173,52 @@ class HueXbmcPlayer( xbmc.Player ):
         if self.InitializeBridgeAndLights():
             enabled_lights = self.getEnabledLights()
             
-            brightness_divider = self.getBrightnessDivider()
-            Log("Brightness divider %s" % (str(brightness_divider)))
-            
             transition_time = self.getTransitionTime()
             Log("Transition time %s" % (str(transition_time)))
             
             for enabled_light in enabled_lights:
                 if video_playing:
                     self.storeLightBrightnesses(enabled_light, True)
-                    self.dimLight(enabled_light, brightness_divider, transition_time)
+                    
+                    new_brightness = self.getNewBrightness(enabled_light)
+                    Log("New brightness  %s" % (str(new_brightness)))
+                    
+                    self.dimLight(enabled_light, new_brightness, transition_time)
                 else:
-                    self.brightenLight(enabled_light, brightness_divider, transition_time)
+                    self.brightenLight(enabled_light, transition_time)
 
-    def getBrightnessDivider(self):
+    def getNewBrightness(self, light_number):
+        new_brightness = BRIGHTNESS_MIN
+        org_brightness = BRIGHTNESS_MAX
+        
         dim_strength_setting = int(__addon__.getSetting("dim_strength"))
         
-        brightness_divider = 2
-        if dim_strength_setting == 0:
-            brightness_divider = 1.5
-        elif dim_strength_setting == 1:
-            brightness_divider = 2.0
-        elif dim_strength_setting == 2:
-            brightness_divider = 3.0
+        if dim_strength_setting == 4:
+            new_brightness = 0
         else:
-            brightness_divider = 4.0
+            if light_number in self.LightBrightnesses:
+                org_brightness = int(self.LightBrightnesses[light_number])
+            
+            #Only change the brightness if it was higher then the minimum brightness
+            if org_brightness > BRIGHTNESS_MIN:
+                
+                brightness_divider = 2
+                if dim_strength_setting == 0:
+                    brightness_divider = 1.5
+                elif dim_strength_setting == 1:
+                    brightness_divider = 2.0
+                elif dim_strength_setting == 2:
+                    brightness_divider = 3.0
+                else:
+                    brightness_divider = 4.0
+                
+                new_brightness = int(org_brightness / brightness_divider)
+            
+                #Don't change it to lower then the minimum brightness
+                if new_brightness < BRIGHTNESS_MIN:
+                    new_brightness = BRIGHTNESS_MIN
         
-        return brightness_divider
+        return new_brightness;
 
     def getTransitionTime(self):
         transition_time_setting = int(__addon__.getSetting("transition_time"))
@@ -216,28 +235,20 @@ class HueXbmcPlayer( xbmc.Player ):
         
         return transition_time
         
-    def dimLight(self, light_number, brightness_divider, transition_time):
+    def dimLight(self, light_number, new_brightness, transition_time):
         if light_number in self.HueLights:
-            Log("Dimming light %s" % (str(light_number)))
             
-            new_brightness = BRIGHTNESS_MIN
-            org_brightness = BRIGHTNESS_MAX
-            
-            if light_number in self.LightBrightnesses:
-                org_brightness = int(self.LightBrightnesses[light_number])
-            
-            #Only change the brightness if it was higher then the minimum brightness
-            if org_brightness > BRIGHTNESS_MIN:
-                new_brightness = int(org_brightness / brightness_divider)
-            
-                #Don't change it to lower then the minimum brightness
-                if new_brightness < BRIGHTNESS_MIN:
-                    new_brightness = BRIGHTNESS_MIN
+            if self.HueLights[light_number].IsOn():
+                Log("Dimming light %s" % (str(light_number)))
                 
-                self.HueLights[light_number].SetBrightness(new_brightness)
+                if new_brightness > 0:                
+                    self.HueLights[light_number].TurnOn(new_brightness)
+                else:
+                    self.HueLights[light_number].TurnOff()
+                
                 self.HueLights[light_number].ActivateLightState(transition_time)
     
-    def brightenLight(self, light_number, brightness_divider, transition_time):
+    def brightenLight(self, light_number, transition_time):
         if light_number in self.HueLights:
             Log("Brighten light %s" % (str(light_number)))
             
@@ -245,8 +256,9 @@ class HueXbmcPlayer( xbmc.Player ):
             if light_number in self.LightBrightnesses:
                 brightness = self.LightBrightnesses[light_number]
             
-            self.HueLights[light_number].SetBrightness(brightness)
-            self.HueLights[light_number].ActivateLightState(transition_time)
+            if brightness > 0:
+                self.HueLights[light_number].TurnOn(brightness)
+                self.HueLights[light_number].ActivateLightState(transition_time)
     
 Log("Service started")
 
